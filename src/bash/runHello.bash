@@ -7,9 +7,8 @@
 # February 2015
 # CA-2
 #
-# script to build HelloWorld.c
+# script to run Hello java application
 # this script should be run from the src/bash directory of the project
 
-# this calls the gcc compiler on the input file HelloWorld.c and 
-# generates the output file HelloWorld.o
-gcc -o ../../bin/HelloWorld.o ../c/HelloWorld.c
+# this runs ie.dit.mark.Hello from the bin directory
+java -cp ../../bin ie.dit.deegan.mark.Hello
