@@ -3,14 +3,6 @@
 /* Simple Server program                                           */
 /*******************************************************************/
 
-#include <stdio.h>
-#include <sys/types.h> 
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <stdlib.h>				// required for exit function
-#include <strings.h>			// required for bzero function
-#include <unistd.h>				// required for read and write functions
-
 void error(char *msg) {
 	perror(msg); // print the provided error message
     exit(0);     // exit the program with exit code 0
