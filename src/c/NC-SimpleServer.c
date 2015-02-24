@@ -10,7 +10,8 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 
-void error(char *msg) {
+void error(char *msg) 
+{
 	perror(msg); // print the provided error message
     exit(0);     // exit the program with exit code 0
 }
