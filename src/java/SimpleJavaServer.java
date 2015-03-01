@@ -10,8 +10,7 @@ public class SimpleJavaServer
 	/** start declaration of main method */
 	public static void main(String[] args)
 	{
-		// print the hello message
-		System.out.println("Server");
+		
 	}// end declaration of main method
 
 } // end declaration of utility class
