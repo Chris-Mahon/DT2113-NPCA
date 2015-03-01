@@ -17,7 +17,7 @@ public class SimpleJavaClient
 		//Main Function
 		try
 		{//Trying to connect to the server and pulling any data sent by the server to it
-			ClientSocket = new Socket("83.212.126.255", 4444);
+			ClientSocket = new Socket("localhost", 4444);
 		}
 		catch(IOException e)
 		{//If the socket fails, itll print out an error message
