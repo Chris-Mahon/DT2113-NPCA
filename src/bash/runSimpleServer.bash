@@ -7,8 +7,8 @@
 # February 2015
 # CA-2
 #
-# script to run NC-SimpleServer
+# script to run SimpleServer
 # this script should be run from the src/bash directory of the project
 
-# this runs NC-SimpleServer.o from the bin directory using the port 4444
-../../bin/NC-SimpleServer.o 4444
+# this runs SimpleServer.o from the bin directory using the port 4444
+../../bin/SimpleServer.o 4444
