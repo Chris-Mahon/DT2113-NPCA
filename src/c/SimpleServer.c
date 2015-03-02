@@ -1,5 +1,5 @@
 /*******************************************************************/
-/* Mark Deegan                                                     */
+/* Christopher Mahon                                                     */
 /* Simple Server program                                           */
 /*******************************************************************/
 #include <stdio.h>
@@ -9,6 +9,8 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <netinet/in.h>
+
+#include <unistd.h>
 
 void error(char *msg) 
 {
@@ -47,15 +49,17 @@ int main(int argc, char *argv[]) {
 
 		if (newsockfd < 0) error("ERROR on accept");
 
-		bzero(buffer,256);
-		n = read(newsockfd,buffer,255);
+		bzero(buffer, 256);
+		n = read(newsockfd, buffer, 255);
 
 		if (n < 0) error("ERROR reading from socket");
 		printf("Here is the message: %s\n",buffer);
 
-		n = write(newsockfd,"I got your message",18);
+		n = write(newsockfd, buffer, strlen(buffer));
 
 		if (n < 0) error("ERROR writing to socket");
+		
+		close(newsockfd);
 	}
 	
 	return 0; 

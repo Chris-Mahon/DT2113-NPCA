@@ -6,9 +6,9 @@ import java.io.*;
 
 /** Christopher Mahon
 Simple Client to connect to a server */
+
 public class SimpleJavaClient
 {
-
 	/** start declaration of main method */
 	public static void main(String[] args)
 	{
@@ -37,8 +37,18 @@ public class SimpleJavaClient
 			//Creates an buffer for incoming messages
 			BufferedReader in = new BufferedReader(new InputStreamReader(ClientSocket.getInputStream()));
 			output.println(OutMessage); //Printing to the Output stream to the server
-			String Incoming = in.readUTF(); //Reads in a string from the server
-			System.out.println("The response is:" + Incoming); //Prints the data from the server
+			
+			while (!in.ready()); //Loops in the client until the in buffer is ready
+			String Incoming = in.readLine(); //Reads in a string from the server
+			if (Incoming != OutMessage) //Checks to make sure the message was recieved properly
+			{
+				System.out.println("The message was not transmitted properly");
+				System.out.println("The response was: " + Incoming); //Prints the data from the server
+			}
+			else
+			{
+				System.out.println("The response was: " + Incoming); //Prints the data from the server
+			}
 		}
 		catch(IOException e)
 		{//If the message transfer fails, itll print out an error message
