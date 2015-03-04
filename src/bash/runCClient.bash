@@ -11,4 +11,4 @@
 # this script should be run from the src/bash directory of the project
 
 # this runs SimpleServer.o from the bin directory using the port 4444
-../../bin/SimpleServer.o 4444
+../../bin/SimpleCClient.o localhost 127.0.0.1 4444

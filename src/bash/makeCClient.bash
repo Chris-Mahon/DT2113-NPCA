@@ -12,4 +12,4 @@
 
 # this calls the gcc compiler on the input file #SimpleServer.c and 
 # generates the output file SimpleServer.o
-gcc -o ../../bin/SimpleServer.o ../c/SimpleServer.c
+gcc -o ../../bin/SimpleCClient.o ../c/SimpleCClient.c
