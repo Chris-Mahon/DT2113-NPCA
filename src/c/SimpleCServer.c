@@ -35,9 +35,16 @@ int main(int argc, char *argv[]) {
 
     bzero((char *) &serv_addr, sizeof(serv_addr));
     portno = atoi(argv[1]);
+	
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_addr.s_addr = INADDR_ANY;
-    serv_addr.sin_port = htons(portno);
+	
+    serv_addr.sin_port = htons(portno);	
+	if (portno == 0) //Checks if the conversion failed
+	{//if it failed, itll print an error message and exit
+		error("Conversion of port failed");
+	}//end if
+	
     if (bind(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0)
      	error("ERROR on binding");
 

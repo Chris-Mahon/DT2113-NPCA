@@ -49,7 +49,8 @@ int main(int argc, char *argv[])
     if (clientsock < 0) error("ERROR opening socket"); //Checks if the socket creation succeeded
 
     bzero((char *) &host, sizeof(host));//Initialises the variable host to zeros, so as to prevent random data from previous programs to effect the system
-    portno = atoi(argv[2]); //creates a local instance of the second parameter which is the port number
+    
+	portno = atoi(argv[2]); //creates a local instance of the second parameter which is the port number
 	if (portno == 0) //Checks if the conversion failed
 	{//if it failed, itll print an error message and exit
 		error("Conversion of port failed");
