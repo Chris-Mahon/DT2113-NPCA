@@ -1,8 +1,11 @@
 
 package ie.dit.student.mahon.christopher;
 
-import java.net.*;
-import java.io.*;
+import java.net.Socket;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.util.Scanner;
 
 /** Christopher Mahon
 Simple Client to connect to a server */
@@ -16,21 +19,18 @@ public class SimpleJavaClient
 		Socket ClientSocket = null; //Creating a blank Socket
 		String hostname, OutMessage;
 		int port;
-		OutMessage = "Words";
+		Scanner keyboard = new Scanner(System.in);
+		
 		//Command Line argument checking
-		if (args.length==3)
-		{//If there are 3 arguments passed in
-			OutMessage = args[2];
-		}
-		else if (args.length!=2)
+		if (args.length!=2)
 		{//If there are not 3 or 2 arguments passed in
 			System.out.println("So... you didnt put enough details in");//The program will print out an error message
 			System.exit(-1);//And it will exit as an error has occurred
 		}
-		else
-		{//Otherwise (IE if 2 arguments have been passed in)
-			OutMessage = "This will be read in from the keyboard"; //This string will be replaced with a keyboard read
-		}
+
+		System.out.println("Enter in your message");
+		OutMessage = keyboard.nextLine();
+		
 		hostname = args[0];//Sets a local variable to the host name we will be connecting to
 		port = Integer.parseInt(args[1]);//Setting a local instance of the port
 		
@@ -59,15 +59,7 @@ public class SimpleJavaClient
 			output.writeUTF(OutMessage); //Printing to the Output stream to the server
 			
 			String Incoming = in.readUTF(); //Reads in a string from the server
-			if (Incoming != OutMessage) //Checks to make sure the message was recieved properly
-			{
-				System.out.println("The message was not transmitted properly");
-				System.out.println("The response was: " + Incoming); //Prints the data from the server
-			}
-			else
-			{
-				System.out.println("The response was: " + Incoming); //Prints the data from the server
-			}
+			System.out.println("The response was: " + Incoming); //Prints the data from the server
 		}
 		catch(IOException e)
 		{//If the message transfer fails, itll print out an error message
