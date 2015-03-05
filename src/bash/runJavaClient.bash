@@ -1,1 +1,1 @@
-java -cp ../../bin ie.dit.student.mahon.christopher.SimpleJavaClient localhost 4441 Hi
+java -cp ../../bin ie.dit.student.mahon.christopher.SimpleJavaClient localhost 4444 Hi
