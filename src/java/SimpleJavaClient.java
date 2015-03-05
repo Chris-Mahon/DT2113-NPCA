@@ -42,7 +42,7 @@ public class SimpleJavaClient
 		{//If the socket fails, itll print out an error message
 			System.out.println("Cannot connect to server, check the hostname and port and try again");//Error Message for the socket creating failing
 			e.printStackTrace();//Prints out an exact error message
-		} // end of catch to catch any sort of exception
+		} // end of catch to catch IOexception
 		
 		
 		//Somewhere the transmission from the server is sent to the server and recieved 
@@ -73,7 +73,7 @@ public class SimpleJavaClient
 		{//If the message transfer fails, itll print out an error message
 			System.out.println("Nope doesnt work");
 			e.printStackTrace();
-		} // end of catch to catch any sort of exception
+		} // end of catch to catch IOexception
 
 	}// end declaration of main method
 

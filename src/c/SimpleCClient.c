@@ -43,41 +43,41 @@ int main(int argc, char *argv[])
 	
 	bzero(buffer, 256);
 	printf("Enter in a message to send to the server");
-	scanf("%s", buffer);
+	scanf("%s", buffer);//Reads in a message from the terminal
 	
     clientsock = socket(AF_INET, SOCK_STREAM, 0);//Creates an instance of the socket
     if (clientsock < 0) error("ERROR opening socket"); //Checks if the socket creation succeeded
 
     bzero((char *) &host, sizeof(host));//Initialises the variable host to zeros, so as to prevent random data from previous programs to effect the system
     portno = atoi(argv[2]); //creates a local instance of the second parameter which is the port number
-	if (portno == 0)
-	{
+	if (portno == 0) //Checks if the conversion failed
+	{//if it failed, itll print an error message and exit
 		error("Conversion of port failed");
-	}
+	}//end if
 	
-    host.sin_family = AF_INET;
-    host.sin_port = htons(portno);
+    host.sin_family = AF_INET; //Adding the family type as a parameter inside of the sockaddr_in struct
+    host.sin_port = htons(portno);//Converts the port supplied into a number
 	
-	if (inet_aton(hostaddr, &host.sin_addr.s_addr)==0)
-	{
+	if (inet_aton(hostaddr, &host.sin_addr.s_addr)==0)//Converts hostaddr into a usable ip address
+	{//if it returns a 0, it means the conversion failed
 		error("ERROR, destination of the server must be an ip address");
-	}
+	}//end if
 	
-    if (connect(clientsock, (struct sockaddr*) &host, sizeof(host)) < 0)
-	{
+    if (connect(clientsock, (struct sockaddr*) &host, sizeof(host)) < 0)//Attempts to connect with the server
+	{//If the connection fails, itll print an error message and close out
 		error("ERROR on connect");
-	}
+	}//emd if
 	
-	n = write(clientsock, buffer, strlen(buffer));
-	if (n < 0) error("ERROR writing to socket");
+	n = write(clientsock, buffer, strlen(buffer));//Writes to the outbound stream
+	if (n < 0) error("ERROR writing to socket");//If it fails, itll return a zero, print an error message and exit
 		
-	bzero(buffer, 256);
-	n = read(clientsock, buffer, 255);
-	if (n < 0) error("ERROR reading from socket");
+	bzero(buffer, 256);//Clears the buffer
+	n = read(clientsock, buffer, 255);//Reads in the input from the server
+	if (n < 0) error("ERROR reading from socket");//If it fails, itll return a zero, print an error message and exit
 	
 	printf("Here is the message: %s\n",buffer);
 	
-	close(clientsock);
+	close(clientsock);//Closing the socket
 	
 	return 0; 
 }
